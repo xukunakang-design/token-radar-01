@@ -76,38 +76,38 @@
   function actionFor(p, capital, chain) {
     var c = (p.category || '').toLowerCase();
     var name = p.name;
-    if (c.indexOf('lend') >= 0 || c.indexOf('cdp') >= 0 || c.indexOf('collateral') >= 0) return 'Supply $' + capital + ' of USDC to ' + name + ' on ' + chain + ' and keep the position open.';
-    if (c.indexOf('dex') >= 0 || c.indexOf('yield') >= 0 || c.indexOf('leveraged farm') >= 0) return 'Provide $' + capital + ' of liquidity to ' + name + "'s main pool on " + chain + ' and keep the position open.';
-    if (c.indexOf('bridge') >= 0) return 'Bridge $' + capital + ' of USDC to ' + chain + ' through ' + name + ' and use the bridged funds in its app.';
-    if (c.indexOf('staking') >= 0 || c.indexOf('restak') >= 0) return "Stake $" + capital + " of the chain's staking asset through " + name + ' and keep the receipt.';
-    if (c.indexOf('perpetual') >= 0 || c.indexOf('derivative') >= 0) return 'Deposit $' + capital + ' of USDC as margin on ' + name + ' and open one small hedge.';
-    if (c.indexOf('prediction') >= 0) return 'Fund $' + capital + ' and place one market position on ' + name + '.';
-    if (c.indexOf('curator') >= 0 || c.indexOf('allocator') >= 0) return 'Deposit $' + capital + ' into a ' + name + ' vault on ' + chain + ' and keep the shares.';
-    if (c.indexOf('basis') >= 0) return 'Deposit $' + capital + " of USDC into " + name + "'s basis vault on " + chain + ' and keep the position.';
-    if (c.indexOf('cede') >= 0) return 'Deposit $' + capital + " of USDC into " + name + "'s CeDeFi vault on " + chain + ' and keep the shares.';
-    if (c.indexOf('payment') >= 0) return 'Hold a $' + capital + ' balance in ' + name + ' on ' + chain + ' and make one payment a week through it.';
-    if (c === 'chain') return 'Bridge $' + capital + ' of USDC to ' + chain + ' through its official bridge and use ' + name + "'s own app there.";
+    if (c.indexOf('lend') >= 0 || c.indexOf('cdp') >= 0 || c.indexOf('collateral') >= 0) return 'Lend $' + capital + ' of USDC into ' + name + ' on ' + chain + ' and leave the position open.';
+    if (c.indexOf('dex') >= 0 || c.indexOf('yield') >= 0 || c.indexOf('leveraged farm') >= 0) return 'Put $' + capital + ' of liquidity into ' + name + "'s main pool on " + chain + ' and leave the position open.';
+    if (c.indexOf('bridge') >= 0) return 'Bridge $' + capital + ' of USDC to ' + chain + ' through ' + name + ', then use the bridged funds inside its app.';
+    if (c.indexOf('staking') >= 0 || c.indexOf('restak') >= 0) return "Stake $" + capital + " of the chain's staking asset through " + name + ' and hold on to the receipt.';
+    if (c.indexOf('perpetual') >= 0 || c.indexOf('derivative') >= 0) return 'Post $' + capital + ' of USDC as margin on ' + name + ' and open one small hedge.';
+    if (c.indexOf('prediction') >= 0) return 'Fund $' + capital + ' and take one position in a market on ' + name + '.';
+    if (c.indexOf('curator') >= 0 || c.indexOf('allocator') >= 0) return 'Put $' + capital + ' into a ' + name + ' vault on ' + chain + ' and hold the shares.';
+    if (c.indexOf('basis') >= 0) return 'Put $' + capital + " of USDC into " + name + "'s basis vault on " + chain + ' and keep the position.';
+    if (c.indexOf('cede') >= 0) return 'Put $' + capital + " of USDC into " + name + "'s CeDeFi vault on " + chain + ' and hold the shares.';
+    if (c.indexOf('payment') >= 0) return 'Keep a $' + capital + ' balance in ' + name + ' on ' + chain + ' and send one payment a week through it.';
+    if (c === 'chain') return 'Bridge $' + capital + ' of USDC to ' + chain + ' on its official bridge and use ' + name + "'s own app there.";
     if (c.indexOf('stable') >= 0) return 'Mint or deposit $' + capital + ' of the stable asset through ' + name + ' on ' + chain + '.';
     if (c.indexOf('rwa') >= 0) return "Mint $" + capital + " of the protocol's yield asset on " + chain + ' and hold it.';
     if (c.indexOf('insurance') >= 0) return 'Buy $' + capital + ' of cover from ' + name + ' on ' + chain + ' and keep the policy.';
-    return 'Deposit $' + capital + ' of USDC into ' + name + ' on ' + chain + ' and keep the position open.';
+    return 'Put $' + capital + ' of USDC into ' + name + ' on ' + chain + ' and keep the position open.';
   }
   function secondActionFor(p, chain) {
     var c = (p.category || '').toLowerCase();
     var name = p.name;
-    if (c.indexOf('lend') >= 0 || c.indexOf('cdp') >= 0 || c.indexOf('collateral') >= 0) return 'Borrow $20 of USDC against the supplied collateral and repay it a week later, so the position shows both sides.';
-    if (c.indexOf('dex') >= 0 || c.indexOf('yield') >= 0 || c.indexOf('leveraged farm') >= 0) return 'Make one swap through ' + name + "'s router on " + chain + ' for about $25, so the wallet shows trading as well as liquidity.';
-    if (c.indexOf('bridge') >= 0) return 'Use the bridged funds once inside the destination app instead of bridging straight back, so the trip reads as real use.';
-    if (c.indexOf('staking') >= 0 || c.indexOf('restak') >= 0) return 'Claim the staking rewards once and restake them, so the wallet shows a second on-chain action.';
-    if (c.indexOf('perpetual') >= 0 || c.indexOf('derivative') >= 0) return 'Close the hedge after a week and open a second one, so the wallet shows repeated use.';
-    if (c.indexOf('prediction') >= 0) return 'Settle the first market position and place a second one on a different market.';
+    if (c.indexOf('lend') >= 0 || c.indexOf('cdp') >= 0 || c.indexOf('collateral') >= 0) return 'Borrow $20 of USDC against the supplied collateral and pay it back a week later, so the position shows both sides.';
+    if (c.indexOf('dex') >= 0 || c.indexOf('yield') >= 0 || c.indexOf('leveraged farm') >= 0) return 'Run one swap of about $25 through ' + name + "'s router on " + chain + ', so the wallet shows trading as well as liquidity.';
+    if (c.indexOf('bridge') >= 0) return 'Spend the bridged funds once inside the destination app instead of bridging straight back, so the trip reads as real use.';
+    if (c.indexOf('staking') >= 0 || c.indexOf('restak') >= 0) return 'Claim the staking rewards once and stake them again, so the wallet shows a second on-chain action.';
+    if (c.indexOf('perpetual') >= 0 || c.indexOf('derivative') >= 0) return 'Close the hedge after a week and open another one, so the wallet shows repeated use.';
+    if (c.indexOf('prediction') >= 0) return 'Settle the first market position, then take a second one in a different market.';
     if (c.indexOf('curator') >= 0 || c.indexOf('allocator') >= 0) return 'Add a second, smaller deposit to the same vault a week later, so the wallet shows repeated deposits.';
     if (c.indexOf('basis') >= 0) return 'Keep the basis position open through one funding cycle and check the funding rate once a week.';
-    if (c.indexOf('cede') >= 0) return "Keep the CeDeFi position open and check the vault's yield once a week.";
-    if (c.indexOf('payment') >= 0) return 'Pay one real bill or transfer through ' + name + ' each week, so the wallet shows repeated use.';
-    if (c === 'chain') return 'Make one transaction a week in an app built on ' + chain + ', so the wallet shows activity on the chain itself.';
+    if (c.indexOf('cede') >= 0) return "Hold the CeDeFi position and check the vault's yield once a week.";
+    if (c.indexOf('payment') >= 0) return 'Pay one real bill or make one transfer through ' + name + ' each week, so the wallet shows repeated use.';
+    if (c === 'chain') return 'Use one app built on ' + chain + ' each week, so the wallet shows activity on the chain itself.';
     if (c.indexOf('stable') >= 0) return 'Hold the minted stable asset for the full hold period instead of redeeming it early.';
-    if (c.indexOf('rwa') >= 0) return 'Check the yield accrual on the held asset once a week and keep the position until the hold ends.';
+    if (c.indexOf('rwa') >= 0) return 'Check the yield building up on the held asset once a week and keep the position until the hold ends.';
     if (c.indexOf('insurance') >= 0) return 'Keep the policy active for the full hold period and renew it if it lapses.';
     return 'Make one more deposit or swap through ' + name + ' a week later, so the wallet shows repeated use.';
   }
@@ -122,14 +122,14 @@
     var capital = capitalFor(p);
     var hold = holdDaysFor(p.age_days);
     return [
-      { text: 'Use a fresh wallet that holds only the funds you plan to farm, and keep its seed phrase offline.', cost: 'under $3 of gas for the first transaction', time: '5 minutes' },
+      { text: 'Start with a fresh wallet that holds only the funds you plan to farm, and keep its seed phrase offline.', cost: 'under $3 of gas for the first transaction', time: '5 minutes' },
       { text: actionFor(p, capital, chain), cost: '$' + capital + ' of capital and about $' + (capital >= 150 ? 8 : 4) + ' of gas', time: '15 minutes to set up' },
       { text: secondActionFor(p, chain), cost: 'about $25 of volume and $2 of gas', time: '10 minutes' },
-      { text: 'Make one qualifying action each week, such as a deposit, a borrow, a swap or a vote.', cost: 'about $2 of gas a week', time: '10 minutes a week' },
-      { text: 'Hold the position for at least ' + hold + ' days so the activity is counted in more than one snapshot.', cost: 'the $' + capital + ' stays in the position', time: hold + ' days' },
-      { text: "Before you withdraw, open the protocol's own points or rewards page and claim only from the link it publishes.", cost: 'no fee to check, and never pay to claim', time: '10 minutes' },
+      { text: 'Do one qualifying action each week, such as a deposit, a borrow, a swap or a vote.', cost: 'about $2 of gas a week', time: '10 minutes a week' },
+      { text: 'Keep the position for at least ' + hold + ' days so the activity lands in more than one snapshot.', cost: 'the $' + capital + ' stays in the position', time: hold + ' days' },
+      { text: "Before you withdraw, open the protocol's own points or rewards page and claim only through the link it publishes.", cost: 'no fee to check, and never pay to claim', time: '10 minutes' },
       { text: 'Do not split this farm across wallets: one wallet\'s activity is what a snapshot reads.', cost: 'nothing', time: 'no extra time' },
-      { text: 'Write the wallet, the dates and every transaction in a farm log so you can repeat the position or unwind it.', cost: 'nothing but the log', time: '5 minutes' }
+      { text: 'Log the wallet, the dates and every transaction, so you can repeat the position or unwind it later.', cost: 'nothing but the log', time: '5 minutes' }
     ].map(stepText);
   }
 
